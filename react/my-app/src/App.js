@@ -10,13 +10,14 @@ import Students from "./components/Students"
 import Teachers from "./components/Teachers"
 import axios from "axios"
 import Header from "./components/Header"
-
+import Addstudent from "./components/Addstudent"
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
      students:[],
-     teachers:[]
+     teachers:[],
+     add:"true"
   }
 }
 
@@ -43,9 +44,25 @@ export default class App extends Component {
 
   }
   
-  
+  addstudent=()=>{ 
+    this.setState({add:"true"})
+      
+      }
+
+ addteacher=()=>{
+    
+  }
   render() {
-  return (
+  
+    {this.state.add ? (
+      <Redirect to="/home" />
+   ) : (
+     <Redirect to="/login" />
+   )}
+  
+  
+  
+    return (
     <Router>
     <div className="App">
 
@@ -61,11 +78,24 @@ export default class App extends Component {
    
    < Route path="/login">
 
-   <button className="btn" onClick={this.getstudents}>get Students</button>
+   <button className="btn" onClick={this.getstudents}>Get Students</button>
+   <button className="btn" onClick={this.addstudent}>Add Student</button>
     <Students student={this.state.students} />
-    <button className="btn" onClick={this.getteachers}>get Teachers</button>
+    <button className="btn" onClick={this.getteachers}>Get Teachers</button>
+    <button className="btn" onClick={this.addteacher} >Add Teacher</button>
+   
    <Teachers teachers={this.state.teachers}/>
+   <Addstudent/>
 </Route>
+{/* <Route path="/login">
+            {this.state.add ? (
+               <Redirect to="/" />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route> */}
+
+
 
 < Route  exact path="/contactus">
      

@@ -49,3 +49,15 @@
     background-color: #4cacaf;
     color: white;
   }
+
+  .label{
+   border: 5px rgb(75, 72, 72) solid;
+  
+  }
+  .style_label{
+    margin: 10px;
+  }
+
+  .btnAdd{
+    margin: 0 100px 5px ;
+  }
