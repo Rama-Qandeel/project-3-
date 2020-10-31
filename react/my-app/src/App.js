@@ -52,6 +52,27 @@ export default class App extends Component {
  addteacher=()=>{
     
   }
+  
+  createNewItem = (newuser) => {
+    // console.log('new : ', newuser.Username);
+    // const newtask = { title: newTitle, isCompleted: false };
+    // axios
+    //   .post('http://localhost:5000/tasks', newtask)
+    //   .then((response) => {
+    //     console.log('RESPONSE: ', response);
+    //     const newArray = [...this.state.tasks];
+    //     newArray.push(response.data);
+    //     this.setState({ tasks: newArray });
+    //   })
+    //   .catch((err) => {
+    //     console.log('ERR: ', err);
+    //   });
+  }; 
+  
+  
+  
+  
+  
   render() {
   
     {this.state.add ? (
@@ -84,8 +105,8 @@ export default class App extends Component {
     <button className="btn" onClick={this.getteachers}>Get Teachers</button>
     <button className="btn" onClick={this.addteacher} >Add Teacher</button>
    
-   <Teachers teachers={this.state.teachers}/>
-   <Addstudent/>
+   <Teachers teachers={this.state.teachers} />
+   <Addstudent add={this.createNewItem}/>
 </Route>
 {/* <Route path="/login">
             {this.state.add ? (

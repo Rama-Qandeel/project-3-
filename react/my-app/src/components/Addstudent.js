@@ -3,16 +3,20 @@ import './App.css'
 export default class Addstudent extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state ={
+      
             Username: '',
             Email:'',
             Password:'',
             Class:'' 
-        };
-      }
+     
     
+      }
+    }
       handleInputChange1 = (e) => {
         // console.log('EVENT: ',e.target.value)
+      
+        
         this.setState({Username:e.target.value})
         
       };
@@ -35,7 +39,19 @@ export default class Addstudent extends Component {
         this.setState({Class:e.target.value})
       };
     
-    
+      addNewUser=()=>{
+        this.props.add({Username:this.state.Username,
+            Email:this.state.Email,
+            Password:this.state.Password,
+            Class:this.state.Class
+        })
+      }
+
+
+
+
+
+
     
     render() {
         return (
@@ -83,7 +99,7 @@ export default class Addstudent extends Component {
                    <input type="text" placeholder="RoleId"/>
                    </label>
                    </div>
-                   <button className="btnAdd"> Add</button>
+                   <button className="btnAdd" onClick={this.addNewUser}> Add</button>
             </div>
         )
     }
