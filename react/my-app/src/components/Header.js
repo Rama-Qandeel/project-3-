@@ -6,8 +6,7 @@ export class Header extends Component {
         return (
             <div>
                 <header className="header">
-                   {/* <p>Welcom To Our School</p>  */}
-                   <nav>
+               <nav>
             <ul className="main-nav">
               <li>
                 <Link className="link" to="/">Home</Link>
@@ -24,7 +23,7 @@ export class Header extends Component {
               </li>
               {'   '}
               <li>
-                <Link className="link" to="/Contactus">Contact</Link>
+                <Link className="link" to="/contactus">Contact</Link>
               </li>
             </ul>
        </nav>

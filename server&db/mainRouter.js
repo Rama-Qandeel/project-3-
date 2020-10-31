@@ -36,19 +36,10 @@ authRouter.get("/protect",getstudents )
 
 authRouter.get("/protect/teachers",getteachers )
 //************************************************************* */
-// authRouter.post("/protect/creatuser", middleware2, async (req, res) => {
-//   try {
-//     res.json(await adduser(req.body));
-//     // res.json("hiiiiiiiiiiiiiiiiiiiiiiii")
-//   } catch (err) {
-//     throw err;
-//   }
-// });
-//************************************************************** */
-authRouter.post("/protect/creatuser",middleware2 ,async (req, res) => {
+authRouter.post("/protect/creatuser",async (req, res) => {
   try {
     res.json(await adduser(req.body));
-    // res.json("hiiiiiiiiiiiiiiiiiiiiiiii")
+
   } catch (err) {
     throw err;
   }

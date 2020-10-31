@@ -48,21 +48,6 @@ const getteachers = async(req,res) => {
   };
 
 //************************************************************* */
-// just manager reg
-// const register = async (user) => {
-//   const newuser = db.filter((manager) => manager.email === user.email);
-//   if (!newuser.length) {
-//     user.password = await bcrypt.hash(user.password, Number(process.env.SALT));
-//     user.roleId = 1;
-//     db.push(user);
-//     // return "new manager has been created";
-//     return user;
-//   } else {
-//     return "user already exists";
-//   }
-// };
-
-//************************************************************* */
 const register = async (user) => {
   const newmanager = new manager({
     email: user.email,
@@ -79,36 +64,7 @@ const register = async (user) => {
   }
 };
 
-//************************************************************** */
-// for all
-// const login = async (user) => {
-//   const savedUser = db.filter((u) => u.email == user.email);
-//   console.log("user", savedUser[0]);
-//   if (savedUser.length) {
-//     if (await bcrypt.compare(user.password, savedUser[0].password)) {
-//       const permissions = roles.filter(
-//         (role) => role.id === savedUser[0].roleId
-//       );
-//       const payload = {
-//         email: savedUser[0].email,
-//         permissions: permissions[0].permissions,
-//         id: permissions[0].id,
-//       };
-//       // console.log("pay",payload)
-//       const options = {
-//         expiresIn: process.env.TOKEN_EXPIRATION,
-//       };
 
-//       console.log("process.env.SECRET", process.env.SECRET);
-
-//       return await jwt.sign(payload, process.env.SECRET, options);
-//     } else {
-//       return "Invalid login check your password";
-//     }
-//   } else {
-//     return "Invalid login check your email";
-//   }
-// };
 //*********************************************************** */
 const login = async (user) => {
   await manager.find({ email: user.email }, async function (err, docs) {
@@ -140,17 +96,6 @@ const login = async (user) => {
   });
 };
 
-//************************************************************* */
-// const adduser = async (user) => {
-//   const newuser = db.filter((u) => u.email === user.email);
-//   if (!newuser.length) {
-//     user.password = await bcrypt.hash(user.password, Number(process.env.SALT));
-//     db.push(user);
-//     return "new user has been created";
-//   } else {
-//     return "user already exists";
-//   }
-// };
 //**************************************************************** */
 const adduser = async (user) => {
   if (user.roleid == 2) {

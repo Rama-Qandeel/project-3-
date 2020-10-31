@@ -5,7 +5,7 @@ export default class Students extends Component {
         super(props);
         this.state = {
          students:[{id:"",
-        username:'',
+         student_name:'',
         class:'',
         email:''
         }]

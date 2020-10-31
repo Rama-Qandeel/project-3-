@@ -5,7 +5,7 @@ export default class Teachers extends Component {
         super(props);
         this.state = {
          teachers:[{id:"",
-        username:'',
+        teacher_name:'',
         material:'',
         email:''
         }]

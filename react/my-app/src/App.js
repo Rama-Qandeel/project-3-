@@ -60,12 +60,20 @@ export default class App extends Component {
    
    
    < Route path="/login">
-   <button onClick={this.getstudents}>get Students</button>
-   <button onClick={this.getteachers}>get Teachers</button>
 
-   <Students student={this.state.students} />
+   <button className="btn" onClick={this.getstudents}>get Students</button>
+    <Students student={this.state.students} />
+    <button className="btn" onClick={this.getteachers}>get Teachers</button>
    <Teachers teachers={this.state.teachers}/>
 </Route>
+
+< Route  exact path="/contactus">
+     
+     <p>Send us a Message</p>
+     
+     </Route>
+
+
     </div>
     </Router>
   );
