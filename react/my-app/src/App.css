@@ -12,14 +12,15 @@ body{
   border: 4px rgb(241, 216, 213) solid;
 }
 
-.main-nav{
+/* .main-nav{
   list-style-type: none;
   text-align: center;
   margin: 5px;
+  text-decoration: none;
 }
 .main-nav li{
   display: inline-block;
   
-} 
+}  */
 
   

@@ -48,28 +48,10 @@ export default class App extends Component {
   return (
     <Router>
     <div className="App">
-<nav>
-            <ul className="main-nav">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              
-              {'    '}
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-             
-              {'   '}
-              <li>
-                <Link to="/login">login</Link>
-              </li>
-              {'   '}
-              <li>
-                <Link to="/Contactus">Contact Us</Link>
-              </li>
-            </ul>
-       </nav>
-    
+
+
+      <Header/>
+
     < Route  exact path="/">
      
      <p>Welcome to our school</p>
@@ -77,7 +59,7 @@ export default class App extends Component {
      </Route>
    
    
-   < Route path="/home">
+   < Route path="/login">
    <button onClick={this.getstudents}>get Students</button>
    <button onClick={this.getteachers}>get Teachers</button>
 

@@ -5,9 +5,25 @@
   padding: 10px;
 }
 
+.main-nav{
+  list-style-type: none;
+  text-align: center;
+  margin: 5px;
 
+  
+}
+.main-nav li{
+  display: inline-block;
 
-
+  
+} 
+.link{
+  color: #f2f2f2;
+  text-decoration: none;
+}
+ .link:hover{
+   color: black;
+ }
 
 #students {
     text-align: center;
