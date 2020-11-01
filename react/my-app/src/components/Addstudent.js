@@ -5,11 +5,11 @@ export default class Addstudent extends Component {
         super(props);
         this.state ={
       
-            Username: '',
-            Email:'',
-            Password:'',
-            Class:'' 
-     
+            username: '',
+            email:'',
+            password:'',
+            class:'' ,
+            roleid:''
     
       }
     }
@@ -17,7 +17,7 @@ export default class Addstudent extends Component {
         // console.log('EVENT: ',e.target.value)
       
         
-        this.setState({Username:e.target.value})
+        this.setState({username:e.target.value})
         
       };
     
@@ -25,25 +25,29 @@ export default class Addstudent extends Component {
       
       handleInputChange2 = (e) => {
         
-        this.setState({Email:e.target.value})
+        this.setState({email:e.target.value})
       };
     
       handleInputChange3 = (e) => {
         
-        this.setState({Password:e.target.value})
+        this.setState({password:e.target.value})
       };
     
     
       handleInputChange4 = (e) => {
        
-        this.setState({Class:e.target.value})
+        this.setState({class:e.target.value})
       };
-    
+      handleInputChange5 = (e) => {
+       
+        this.setState({roleid:e.target.value})
+      };
       addNewUser=()=>{
-        this.props.add({Username:this.state.Username,
-            Email:this.state.Email,
-            Password:this.state.Password,
-            Class:this.state.Class
+        this.props.add({username:this.state.username,
+            email:this.state.email,
+            password:this.state.password,
+            class:this.state.class,
+            roleid:this.state.roleid
         })
       }
 
@@ -96,7 +100,10 @@ export default class Addstudent extends Component {
                   
                    <div className="style_label">
                    <label> RoleId : 
-                   <input type="text" placeholder="RoleId"/>
+                   <input type="text" 
+                   placeholder="RoleId"
+                   onChange={this.handleInputChange5}
+                   />
                    </label>
                    </div>
                    <button className="btnAdd" onClick={this.addNewUser}> Add</button>

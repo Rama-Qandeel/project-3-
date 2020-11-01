@@ -98,37 +98,39 @@ const login = async (user) => {
 
 //**************************************************************** */
 const adduser = async (user) => {
-  if (user.roleid == 2) {
-    const newuser = new teacher({
-      email: user.email,
-      username: user.username,
-      password: await bcrypt.hash(user.password, Number(process.env.SALT)),
-      material: user.material,
-      roleid: user.roleid,
-    });
+  // const newuser = new teacher({
+    //   email: user.email,
+    //   username: user.username,
+    //   password: await bcrypt.hash(user.password, Number(process.env.SALT)),
+    //   material: user.material,
+    //   roleid: user.roleid,
+    // });
 
-    try {
-      const created = await newuser.save();
-      return "create new user : " + user.username;
-    } catch (err) {
-      return err;
-    }
-  } else {
+    // try {
+    //   const created = await newuser.save();
+    //   return "create new user : " + user.username;
+    // } catch (err) {
+    //   return err;
+    // }
+  // }
+  // await bcrypt.hash(user.password, Number(process.env.SALT)),
     const newuser = new student({
-      email: user.email,
       username: user.username,
-      password: await bcrypt.hash(user.password, Number(process.env.SALT)),
+      email: user.email,
+      password: user.password,
       class: user.class,
       roleid: user.roleid,
     });
+    console.log('newuser :',newuser);
+    
     try {
       const created = await newuser.save();
-      return "create new user : " + user.username;
+      return newuser
     } catch (err) {
       return "please change the email";
     }
   }
-};
+
 //************************************************************ */
 // const deleteuser = (user) => {
 //   const deletuser = db.filter((u) => u.email == user.email);
