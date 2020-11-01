@@ -38,7 +38,6 @@ authRouter.get("/protect/teachers",getteachers )
 //************************************************************* */
 authRouter.post("/protect/creatuser",async (req, res) => {
 console.log('body',req.body);
-
   try {
     res.json(await adduser(req.body));
 
@@ -48,13 +47,15 @@ console.log('body',req.body);
 });
 
 //************************************************************* */
-// authRouter.delete("/protect/deleteuser", middleware2, async (req, res) => {
-//   try {
-//     res.json(await deleteuser(req.body));
-//   } catch (err) {
-//     throw err;
-//   }
-// });
+authRouter.delete("/protect/deleteuser", async (req, res) => {
+  try {
+    res.json(await deleteuser(req.body));
+  } catch (err) {
+    throw err;
+  }
+});
+
+
 /**************************************************************** */
 // authRouter.delete("/protect/deleteuser",middleware3 ,async (req, res) => {
 //   try {

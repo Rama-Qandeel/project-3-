@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import bcrypt from "bcrypt"
 import {
   BrowserRouter as Router,
   Route,
@@ -12,6 +11,7 @@ import Teachers from "./components/Teachers";
 import axios from "axios";
 import Header from "./components/Header";
 import Addstudent from "./components/Addstudent";
+import Deletestudent from "./components/Deletestudent"
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +19,7 @@ export default class App extends Component {
       students: [],
       teachers: [],
       add: "true",
+      
     };
   }
 
@@ -68,9 +69,32 @@ export default class App extends Component {
       });
   };
 
-  deletestudent = () => {
-    console.log("delete");
+ 
+ 
+ 
+ 
+  deletestudent = (userdelete) => {
+    // console.log("user react : ", user);
+
+    axios
+      .delete("http://localhost:5000/protect/deleteuser",userdelete)
+      .then((response) => {
+        console.log("user react : ", userdelete);
+        console.log("RESPONSE: ", response);
+        const student = [...this.state.students];
+        const newstudents=student.filter((user)=>{
+          return user.email !==userdelete.email
+       })
+            this.setState({ students:newstudents})
+      })
+      .catch((err) => {
+        console.log("ERR: ", err);
+      });
   };
+
+  // const student=[...this.state.students]
+  // const newstudents=student.filter((user)=>{
+  //     return user.email !==this.state.studentdelete
 
   render() {
     return (
@@ -89,10 +113,7 @@ export default class App extends Component {
             <button className="btn" onClick={this.addstudent}>
               Add Student
             </button>
-            <button className="btn" onClick={this.deletestudent}>
-              Delete Student
-            </button>
-            <input type="text" placeholder="email" />
+            < Deletestudent delete={this.deletestudent}/>
             <Students student={this.state.students} />
             <button className="btn" onClick={this.getteachers}>
               Get Teachers

@@ -113,11 +113,11 @@ const adduser = async (user) => {
     //   return err;
     // }
   // }
-  // await bcrypt.hash(user.password, Number(process.env.SALT)),
+ 
     const newuser = new student({
       username: user.username,
       email: user.email,
-      password: user.password,
+      password: await bcrypt.hash(user.password, Number(process.env.SALT)),
       class: user.class,
       roleid: user.roleid,
     });
@@ -131,21 +131,13 @@ const adduser = async (user) => {
     }
   }
 
-//************************************************************ */
-// const deleteuser = (user) => {
-//   const deletuser = db.filter((u) => u.email == user.email);
-//   if (deletuser.length) {
-//     // return deleteuser
-//     return "The user was deleted";
-//   } else {
-//     return "The user not defined";
-//   }
-// };
+
 //**************************************************************** */
 const deleteuser = (user) => {
   try {
-    const deleteUser = manager.deleteOne({ email: user.email });
-    return deleteUser;
+    const deleteUser = student.deleteOne({ email: user.email });
+    return deleteUser
+
   } catch (err) {
     throw err;
   }
