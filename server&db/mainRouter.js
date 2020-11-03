@@ -13,14 +13,14 @@ const authRouter = express.Router();
 // const { middleware, middleware2, middleware3 } = require("./middleware");
 
 //************************************************************* */
-//add new manager
-// authRouter.post("/register", async (req, res) => {
-//   try {
-//     res.json(await register(req.body))
-//   } catch (err) {
-//     throw err;
-//   }
-// });
+// add new manager
+authRouter.post("/register", async (req, res) => {
+  try {
+    res.json(await register(req.body))
+  } catch (err) {
+    throw err;
+  }
+});
 
 // //************************************************************* */
 // //for all
@@ -31,6 +31,8 @@ const authRouter = express.Router();
 //     throw err;
 //   }
 // });
+
+authRouter.post("/login",login)
 
 authRouter.get("/protect",getstudents )
 

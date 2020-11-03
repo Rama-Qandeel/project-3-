@@ -19,9 +19,10 @@ export default class Students extends Component {
             return <th key={index}>{key.toUpperCase()}</th>
          })
 
+         let randomID = Math.floor(Math.random() * 999999);
 
    const students= this.props.student.map((student,i)=>{
-        return ( <tr key={student.id}>
+        return ( <tr key={i+1}>
             <td>{i+1}</td>
             <td>{student.username}</td>
           <td>{student.class}</td>

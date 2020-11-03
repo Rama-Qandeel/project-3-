@@ -26,7 +26,7 @@ export default class Teachers extends Component {
    const teachers= this.props.teachers.map((teacher,i)=>{
    
     return (
-       <tr key={teacher.id}>
+       <tr key={i+1}>
            <td>{i+1}</td>
            <td>{teacher.username}</td>
          <td>{teacher.material}</td>

@@ -19,11 +19,15 @@ export class Header extends Component {
              
               {'   '}
               <li>
-                <Link className="link" to="/login">Login</Link>
+                <Link className="link" to="/information">Information</Link>
               </li>
               {'   '}
               <li>
                 <Link className="link" to="/contactus">Contact</Link>
+              </li>
+              {'    '}
+              <li>
+                <Link className="link" to="/reg">Register</Link>
               </li>
             </ul>
        </nav>

@@ -10,7 +10,7 @@ const managerSchema = new mongoose.Schema({
   const teacherSchema = new mongoose.Schema({ 
     email: {type: String, required: true, unique: true },
     username: { type: String, required: true },
-    password: { type: String, required: true ,select:false},
+    password: { type: String, required: true},
     material:{  type:String,  required: true},
     time:{  type:String},
     roleid:{type:Number,required: true,select:false}

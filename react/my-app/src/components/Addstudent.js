@@ -51,9 +51,11 @@ export default class Addstudent extends Component {
         })
       }
 
+      back=()=>{
+        this.props.history.replace("/information")
+      }
 
-
-
+    
 
 
     
@@ -107,6 +109,9 @@ export default class Addstudent extends Component {
                    </label>
                    </div>
                    <button className="btnAdd" onClick={this.addNewUser}> Add</button>
+                   <button className="btnAdd" onClick={this.back}> Back</button>
+                   
+            
             </div>
         )
     }

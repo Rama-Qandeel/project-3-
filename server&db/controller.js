@@ -49,33 +49,39 @@ const getteachers = async(req,res) => {
 
 //************************************************************* */
 const register = async (user) => {
-  const newmanager = new manager({
+  const newmanager = new teacher({
     email: user.email,
     username: user.username,
     password: await bcrypt.hash(user.password, Number(process.env.SALT)),
-    roleid: 1,
+    material:user.material,
+    roleid: user.roleid,
   });
 
   try {
-    const created = await newmanager.save();
+    await  newmanager.save();
+    console.log('user :',newmanager);
     return "create new user : " + user.username;
+ 
   } catch (err) {
+  
     return err;
   }
 };
 
 
 //*********************************************************** */
-const login = async (user) => {
-  await manager.find({ email: user.email }, async function (err, docs) {
+const login = async (req,res) => {
+ 
+ 
+  user=req.body;
+  console.log('user',user);
+const validUser=  await teacher.find({ email: user.email })
+    console.log('validUser:',validUser);
     
-    console.log('docs : ',docs);
-    
-    if (docs.length) {
-      if (await bcrypt.compare(user.password, docs[0].password)) {
+    if (validUser.length) {
+      if (await bcrypt.compare(user.password, validUser[0].password)) {
         const payload = {
-          email: docs[0].email,
-          roleid:docs[0].roleid
+          email: validUser[0].email,
         };
         const options = {
           expiresIn: process.env.TOKEN_EXPIRATION,
@@ -84,17 +90,18 @@ const login = async (user) => {
 
         console.log(token);
 
-        return token;
+        res.json(token) ;
       } else {
-        console.log("Invalid login check your password");
-        return "Invalid login check your password";
+        
+        res.json ("Invalid login check your password");
       }
     } else {
-      console.log("Invalid login check your email");
-      return "Invalid login check your email";
+
+     
+      res.json ("Invalid login check your email");
     }
-  });
-};
+
+}
 
 //**************************************************************** */
 const adduser = async (user) => {
@@ -125,7 +132,7 @@ const adduser = async (user) => {
     
     try {
       const created = await newuser.save();
-      return newuser
+     return newuser
     } catch (err) {
       return "please change the email";
     }
@@ -134,8 +141,14 @@ const adduser = async (user) => {
 
 //**************************************************************** */
 const deleteuser = (user) => {
+  
+  console.log('user : ',user);
+  
   try {
     const deleteUser = student.deleteOne({ email: user.email });
+    console.log('deleteuser',deleteuser);
+    
+    
     return deleteUser
 
   } catch (err) {
